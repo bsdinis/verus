@@ -313,6 +313,7 @@ jobs:
         run: |
           . "$HOME/.cargo/env"
           . ../tools/activate
+          ./tools/get-z3.sh
           ./tools/docs.sh --check
 
   release:
