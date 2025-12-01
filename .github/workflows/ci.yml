@@ -139,7 +139,7 @@ jobs:
           ./target-verus/release/verus ../examples/test.rs
       - name: upload verus release artifact
         uses: actions/upload-artifact@v4
-        if: matrix.features == ''
+        if: matrix.features == '' && github.repository == "verus-lang/verus"
         with:
             name: verus-arm64-macos
             path: verus-arm64-macos.zip
@@ -151,7 +151,7 @@ jobs:
           ./tools/docs.sh
       - name: upload verusdoc artifact
         uses: actions/upload-artifact@v4
-        if: matrix.features == ''
+        if: matrix.features == '' && github.repository == "verus-lang/verus"
         with:
           name: verusdoc
           path: source/doc
@@ -201,6 +201,7 @@ jobs:
           ./target-verus/release/verus ../examples/test.rs
       - name: upload verus release artifact
         uses: actions/upload-artifact@v4
+        if: github.repository == "verus-lang/verus"
         with:
             name: verus-x86-macos
             path: verus-x86-macos.zip
@@ -245,6 +246,7 @@ jobs:
         shell: powershell
       - name: upload verus release artifact
         uses: actions/upload-artifact@v4
+        if: github.repository == "verus-lang/verus"
         with:
             name: verus-x86-win
             path: verus-x86-win.zip
@@ -289,6 +291,7 @@ jobs:
           ./target-verus/release/verus ../examples/test.rs
       - name: upload verus release artifact
         uses: actions/upload-artifact@v4
+        if: github.repository == "verus-lang/verus"
         with:
             name: verus-x86-linux
             path: verus-x86-linux.zip
@@ -352,6 +355,7 @@ jobs:
 
       - name: upload release for x86-linux
         uses: actions/upload-release-asset@v1
+        if: github.repository == "verus-lang/verus"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -362,6 +366,7 @@ jobs:
 
       - name: upload release for arm64-macos
         uses: actions/upload-release-asset@v1
+        if: github.repository == "verus-lang/verus"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -372,6 +377,7 @@ jobs:
 
       - name: upload release for x86-macos
         uses: actions/upload-release-asset@v1
+        if: github.repository == "verus-lang/verus"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -382,6 +388,7 @@ jobs:
 
       - name: upload release for x86-win
         uses: actions/upload-release-asset@v1
+        if: github.repository == "verus-lang/verus"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
@@ -392,6 +399,7 @@ jobs:
 
       - name: publish release
         uses: verus-lang/action-update-release@v0.2
+        if: github.repository == "verus-lang/verus"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
